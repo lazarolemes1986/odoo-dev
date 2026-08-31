@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_mi_producto_list" model="ir.ui.view">
+         <field name="name">mi.producto.list</field>
+         <field name="model">mi.producto</field>
+         <field name="arch" type="xml">
+               <tree>
+                    <field name="name"></field>
+                    <field name="precio"></field>
+                    <field name="stock"></field>
+               </tree>
+        </field>
+    </record>
+
+    <record id="action_mi_producto" model="ir.actions.act_window">
+        <field name="name">Productos</field>
+        <field name="res_model">mi.producto</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_mi_producto_root"
+        name="Mis Productos"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_mi_producto"
+        name="Productos"
+        parent="menu_mi_producto_root"
+        action="action_mi_producto"
+        sequence="10"
+    />
+</odoo>

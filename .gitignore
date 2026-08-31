@@ -1,0 +1,5 @@
+logs
+error.txt
+__pycache__/
+*.__pyc
+/Microsoft/
