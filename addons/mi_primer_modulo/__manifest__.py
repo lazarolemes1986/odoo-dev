@@ -6,7 +6,7 @@
     "author": "Lazaro Lemes",
     "category":"Tools",
     "depends": ["base"],
-    "data":["security/ir.model.access.csv", "views/producto_views.xml"],
+    "data":["security/ir.model.access.csv", "views/producto_views.xml", "views/categoria_views.xml"],
     "installable":True,
     "application":True,
 }
