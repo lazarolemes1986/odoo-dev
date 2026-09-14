@@ -16,6 +16,8 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="descripcion"/>
+                        <field name="active"/>
                     </group>
                     <notebook>
                         <page string="Productos">
@@ -31,6 +33,28 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+  </record>
+ 
+  <record id="view_mi_categoria_search" model="ir.ui.view">
+        <field name="name">mi.categoria.search</field>
+        <field name="model">mi.categoria</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter string="Archivadas"
+                        name="archivadas"
+                        domain="[('active', '=', False)]"
+                        context="{'active_test':False}"/>
+
+                <filter string="Con productos"
+                        name="con_productos"
+                        domain="[('producto_ids', '!=', False)]"/>
+
+                <filter string="Sin productos"
+                        name="sin_productos"
+                        domain="[('producto_ids', '=', False)]"/>
+            </search>
         </field>
   </record>
 
