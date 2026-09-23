@@ -19,10 +19,24 @@
         <field name="model">mi.producto</field>
         <field name="arch" type="xml">
             <form string="Producto">
+                <header>
+                    <button name="action_activar"
+                            string="Activar"
+                            type="object"
+                            invisible="state !='borrador'"/>
+
+                    <button name="action_agotar"
+                            string="Agotar"
+                            type="object"
+                            invisible="stock !=0 or state != 'activo'"  
+                            />
+                </header>
+               
                 <sheet>
                     <group>
                         <field name="name"/>
                         <field name="categoria_id"/>
+                        <field name="state" readonly="1"/>
                         <field name="precio"/>
                         <field name="stock"/>
                         <field name="valor_total" readonly="1"/>

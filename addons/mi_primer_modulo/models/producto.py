@@ -18,6 +18,15 @@ class Producto(models.Model):
         "mi.categoria",
         string="Categoria",
     )
+    state= fields.Selection(
+        [
+            ("borrador", "Borrador"),
+            ("activo", "Activo"),
+            ("agotado", "Agotado"),
+        ],
+        string="Estado",
+        default="borrador",
+    )
 
     @api.constrains("precio", "stock")
     def comprobar_valores(self):
@@ -31,3 +40,16 @@ class Producto(models.Model):
     def _calcular_valor_total(self):
         for record in self:
             record.valor_total = record.precio * record.stock
+
+    def action_activar(self):
+        for producto in self:
+            producto.state="activo"
+
+    def action_agotar(self):
+        for producto in self:
+            if producto.stock ==0:
+                producto.state="agotado"
+            elif producto.stock > 0:
+                raise ValidationError ("No se puede agotar un producto mientras el stock sea mayor  que cero")
+                
+
